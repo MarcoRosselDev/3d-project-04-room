@@ -1,5 +1,7 @@
-import Experience from "./Experience";
+import Experience from "../Experience";
 import * as THREE from "three";
+
+import Room from "./Room";
 
 export default class World {
   constructor() {
@@ -8,6 +10,8 @@ export default class World {
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
     this.camera = this.experience.camera;
+
+    this.room = new Room();
   }
 
   resize() {}
