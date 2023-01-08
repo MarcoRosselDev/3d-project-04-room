@@ -33,4 +33,22 @@ export default class Camera {
     );
     this.scene.add(this.orthographicCamera);
   }
+
+  resize() {
+    // Updateing Perspective Camera on Resize
+    this.perspectiveCamera.aspect = this.sizes.aspect;
+    this.perspectiveCamera.updateProjectionMatrix();
+
+    // Updateing Orthographic Camera on Resize
+    this.orthographicCamera.left =
+      (-this.sizes.aspect * this.sizes.frutrum) / 2;
+
+    this.orthographicCamera.right =
+      (this.sizes.aspect * this.sizes.frutrum) / 2;
+
+    this.orthographicCamera.top = this.sizes.frutrum / 2;
+
+    this.orthographicCamera.bottom = -this.sizes.frutrum / 2;
+    this.orthographicCamera.updateProjectionMatrix();
+  }
 }
