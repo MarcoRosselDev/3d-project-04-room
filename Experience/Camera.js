@@ -1,5 +1,5 @@
-import Experience from "./Experience";
 import * as THREE from "three";
+import Experience from "./Experience";
 
 export default class Camera {
   constructor() {
@@ -51,4 +51,6 @@ export default class Camera {
     this.orthographicCamera.bottom = -this.sizes.frutrum / 2;
     this.orthographicCamera.updateProjectionMatrix();
   }
+
+  update() {}
 }
