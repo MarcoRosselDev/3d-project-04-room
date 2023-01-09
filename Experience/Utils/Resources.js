@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { EventEmitter } from "events";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
@@ -23,8 +24,8 @@ export default class Resources extends EventEmitter {
     this.loaders = {};
     this.loaders.gltfLoader = new GLTFLoader();
     this.loaders.dracoLoader = new DRACOLoader();
-    this.loaders.dracoLoader.setDecoderPath("/draco");
-    // this.loaders.gltfLoader.setDracoLoader(this.loaders.dracoLoader);
+    this.loaders.dracoLoader.setDecoderPath("/draco/");
+    this.loaders.gltfLoader.setDRACOLoader(this.loaders.dracoLoader);
   }
 
   startLoading() {
@@ -39,10 +40,20 @@ export default class Resources extends EventEmitter {
 
         this.video[asset.name] = document.createElement("video");
         this.video[asset.name].src = asset.path;
+        this.video[asset.name].muted = true;
         this.video[asset.name].playsInline = true;
         this.video[asset.name].autoplay = true;
         this.video[asset.name].loop = true;
         this.video[asset.name].play();
+
+        this.videoTexture[asset.name] = new THREE.VideoTexture(
+          this.video[asset.name]
+        );
+        this.videoTexture[asset.name].flipY = true;
+        this.videoTexture[asset.name].minFilter = THREE.NearestFilter;
+        this.videoTexture[asset.name].magFilter = THREE.NearestFilter;
+        this.videoTexture[asset.name].generateMipmaps = false;
+        this.videoTexture[asset.name].encoding = THREE.sRGBEncoding;
       }
     }
   }
