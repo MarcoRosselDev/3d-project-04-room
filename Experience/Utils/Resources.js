@@ -1,4 +1,6 @@
 import { EventEmitter } from "events";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import Experience from "../Experience.js";
 
 export default class Resources extends EventEmitter {
@@ -18,7 +20,7 @@ export default class Resources extends EventEmitter {
   }
 
   setLoaders() {
-    console.log("hola");
+    this.loaders = {};
   }
 
   startLoading() {
