@@ -33,6 +33,16 @@ export default class Resources extends EventEmitter {
         this.loaders.gltfLoader.load(asset.path, (file) => {
           this.singleAssetLoaded(asset, file);
         });
+      } else if (asset.type === "videoTexture") {
+        this.video = {};
+        this.videoTexture = {};
+
+        this.video[asset.name] = document.createElement("video");
+        this.video[asset.name].src = asset.path;
+        this.video[asset.name].playsInline = true;
+        this.video[asset.name].autoplay = true;
+        this.video[asset.name].loop = true;
+        this.video[asset.name].play();
       }
     }
   }
