@@ -8,6 +8,20 @@ export default class Resources extends EventEmitter {
     this.renderer = this.experience.renderer;
 
     this.assets = assets;
-    console.log(this.assets);
+
+    this.items = {};
+    this.queue = this.assets.length;
+    this.loaded = 0;
+
+    this.setLoaders();
+    this.startLoading();
+  }
+
+  setLoaders() {
+    console.log("hola");
+  }
+
+  startLoading() {
+    console.log("hola");
   }
 }
