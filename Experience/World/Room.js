@@ -24,6 +24,15 @@ export default class Room {
           groupchild.receiveShadow = true;
         });
       }
+
+      if (child.name === "AquaGlass") {
+        child.material = new THREE.MeshPhysicalMaterial();
+        child.material.roughness = 0;
+        child.material.color.set("279fdd");
+        child.material.ior = 3;
+        child.material.transmission = 1;
+        child.material.opacity = 1;
+      }
     });
 
     this.scene.add(this.actualRoom);
