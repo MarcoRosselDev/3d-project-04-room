@@ -33,10 +33,16 @@ export default class Room {
         child.material.transmission = 1;
         child.material.opacity = 1;
       }
+
+      if (child.name === "Computer") {
+        child.children[1].material = new THREE.MeshBasicMaterial({
+          map: this.resources.items.screen,
+        });
+      }
     });
 
     this.scene.add(this.actualRoom);
-    this.actualRoom.scale.set(0.051, 0.051, 0.051);
+    this.actualRoom.scale.set(0.11, 0.11, 0.11);
   }
 
   resize() {}
