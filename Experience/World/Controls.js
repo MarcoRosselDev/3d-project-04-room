@@ -1,5 +1,6 @@
 import Experience from "../Experience";
 import * as THREE from "three";
+import GSAP from "gsap";
 
 export default class Room {
   constructor() {
@@ -17,6 +18,8 @@ export default class Room {
       target: 0,
       ease: 0.1,
     };
+
+    this.position = new THREE.Vector3(0, 0, 0);
 
     this.setPath();
     this.onWheel();
@@ -62,8 +65,8 @@ export default class Room {
       this.lerp.target,
       this.lerp.ease
     );
-    this.curve.getPointAt(this.progress % 1, this.dummyCurve);
+    this.curve.getPointAt(this.lerp.current, this.position);
 
-    this.camera.orthographicCamera.position.copy(this.dummyCurve);
+    this.camera.orthographicCamera.position.copy(this.position);
   }
 }
