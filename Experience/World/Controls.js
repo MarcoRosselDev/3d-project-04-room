@@ -12,6 +12,12 @@ export default class Room {
     this.progress = 0;
     this.dummyCurve = new THREE.Vector3(0, 0, 0);
 
+    this.lerp = {
+      current: 0,
+      target: 0,
+      ease: 0.1,
+    };
+
     this.setPath();
     this.onWheel();
   }
@@ -41,12 +47,9 @@ export default class Room {
     window.addEventListener("wheel", (e) => {
       console.log(e);
       if (e.deltaY > 0) {
-        this.progress += 0.1;
+        this.lerp.target += 0.01;
       } else {
-        this.progress -= 0.1;
-        if (this.progress < 0) {
-          this.progress = 1;
-        }
+        this.lerp.target -= 0.01;
       }
     });
   }
@@ -54,8 +57,12 @@ export default class Room {
   resize() {}
 
   update() {
+    this.lerp.current = GSAP.utils.interpolate(
+      this.lerp.current,
+      this.lerp.target,
+      this.lerp.ease
+    );
     this.curve.getPointAt(this.progress % 1, this.dummyCurve);
-    // this.progress -= 0.01;
 
     this.camera.orthographicCamera.position.copy(this.dummyCurve);
   }
