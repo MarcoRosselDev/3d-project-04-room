@@ -16,13 +16,14 @@ export default class Camera {
 
   createPerspectiveCamera() {
     this.perspectiveCamera = new THREE.PerspectiveCamera(
-      35,
+      95, // aqui se modifica el zoom
       this.sizes.aspect,
       0.1,
       1000
     );
     this.scene.add(this.perspectiveCamera);
 
+    // aqui se modifica la posicion inicial de la camara
     this.perspectiveCamera.position.z = 6.3;
     this.perspectiveCamera.position.x = 0.3;
     this.perspectiveCamera.position.y = 3.06;
@@ -55,7 +56,7 @@ export default class Camera {
   setOrbitControls() {
     this.controls = new OrbitControls(this.perspectiveCamera, this.canvas);
     this.controls.enableDamping = true;
-    this.controls.enableZoom = true;
+    this.controls.enableZoom = false; // aqui se modifica si el zoom se aplica o no
   }
   resize() {
     // Updateing Perspective Camera on Resize
