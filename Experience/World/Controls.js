@@ -36,8 +36,8 @@ export default class Room {
   resize() {}
 
   update() {
-    this.curve.getPointAt(this.progress, this.dummyCurve);
-    this.progress += 0.001;
+    this.curve.getPointAt(this.progress % 1, this.dummyCurve);
+    this.progress += 0.01;
     this.camera.orthographicCamera.position.copy(this.dummyCurve);
   }
 }
