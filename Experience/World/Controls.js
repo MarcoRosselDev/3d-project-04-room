@@ -20,12 +20,10 @@ export default class Room {
       new THREE.Vector3(10, 0, 10),
     ]);
 
-    const points = this.curve.getPoint(50);
-
+    const points = this.curve.getPoints(50);
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
     const material = new THREE.LineBasicMaterial({ color: 0xff0000 });
-
     // Create the final object to add to the scene
     const curveObject = new THREE.Line(geometry, material);
     this.scene.add(curveObject);
