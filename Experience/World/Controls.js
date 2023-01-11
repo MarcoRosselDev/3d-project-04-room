@@ -65,6 +65,8 @@ export default class Room {
       this.lerp.target,
       this.lerp.ease
     );
+    this.lerp.target = GSAP.utils.clamp(0, 1, this.lerp.target);
+    this.lerp.current = GSAP.utils.clamp(0, 1, this.lerp.current);
     this.curve.getPointAt(this.lerp.current, this.position);
 
     this.camera.orthographicCamera.position.copy(this.position);
