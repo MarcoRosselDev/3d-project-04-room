@@ -29,7 +29,7 @@ export default class Room {
       if (child.name === "Aquarium") {
         child.material = new THREE.MeshPhysicalMaterial();
         child.material.roughness = 0;
-        child.material.color.set("#279fdd");
+        child.material.color.set(0x549dd2);
         child.material.ior = 3;
         child.material.transmission = 1;
         child.material.opacity = 1;

@@ -38,17 +38,25 @@ export default class Room {
   }
 
   onWheel() {
-    console.log("hola");
+    window.addEventListener("wheel", (e) => {
+      console.log(e);
+      if (e.deltaY > 0) {
+        this.progress += 0.1;
+      } else {
+        this.progress -= 0.1;
+        if (this.progress < 0) {
+          this.progress = 1;
+        }
+      }
+    });
   }
 
   resize() {}
 
   update() {
     this.curve.getPointAt(this.progress % 1, this.dummyCurve);
-    this.progress -= 0.01;
-    if (this.progress < 0) {
-      this.progress = 1;
-    }
+    // this.progress -= 0.01;
+
     this.camera.orthographicCamera.position.copy(this.dummyCurve);
   }
 }
