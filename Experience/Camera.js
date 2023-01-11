@@ -22,6 +22,10 @@ export default class Camera {
       1000
     );
     this.scene.add(this.perspectiveCamera);
+
+    this.perspectiveCamera.position.z = 6.3;
+    this.perspectiveCamera.position.x = 0.3;
+    this.perspectiveCamera.position.y = 3.06;
   }
   createOrthographicCamera() {
     this.frutrum = 5;
@@ -62,6 +66,7 @@ export default class Camera {
 
   update() {
     this.controls.update();
+    // console.log(this.perspectiveCamera.position);
   }
 }
 
