@@ -7,6 +7,7 @@ export default class Room {
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
     this.time = this.experience.time;
+    this.camera = this.experience.camera;
 
     this.setPath();
   }
@@ -19,6 +20,12 @@ export default class Room {
       new THREE.Vector3(5, -5, 5),
       new THREE.Vector3(10, 0, 10),
     ]);
+
+    this.dummyCurve = new THREE.Vector3(0, 0, 0);
+    this.curve.getPointAt(1, this.dummyCurve);
+    console.log(this.dummyCurve);
+
+    this.camera.orthographicCamera.position.copy(this.dummyCurve);
 
     const points = this.curve.getPoints(50);
     const geometry = new THREE.BufferGeometry().setFromPoints(points);

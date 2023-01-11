@@ -42,8 +42,8 @@ export default class Camera {
     this.helper = new THREE.CameraHelper(this.orthographicCamera);
     this.scene.add(this.helper);
 
-    const size = 10;
-    const division = 10;
+    const size = 20;
+    const division = 20;
 
     const gridHelper = new THREE.GridHelper(size, division);
     this.scene.add(gridHelper);
