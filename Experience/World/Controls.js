@@ -9,6 +9,9 @@ export default class Room {
     this.time = this.experience.time;
     this.camera = this.experience.camera;
 
+    this.progress = 0;
+    this.dummyCurve = new THREE.Vector3(0, 0, 0);
+
     this.setPath();
   }
 
@@ -21,12 +24,6 @@ export default class Room {
       new THREE.Vector3(10, 0, 10),
     ]);
 
-    this.dummyCurve = new THREE.Vector3(0, 0, 0);
-    this.curve.getPointAt(1, this.dummyCurve);
-    console.log(this.dummyCurve);
-
-    this.camera.orthographicCamera.position.copy(this.dummyCurve);
-
     const points = this.curve.getPoints(50);
     const geometry = new THREE.BufferGeometry().setFromPoints(points);
 
@@ -38,5 +35,9 @@ export default class Room {
 
   resize() {}
 
-  update() {}
+  update() {
+    this.curve.getPointAt(this.progress, this.dummyCurve);
+    this.progress += 0.001;
+    this.camera.orthographicCamera.position.copy(this.dummyCurve);
+  }
 }
