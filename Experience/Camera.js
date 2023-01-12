@@ -29,13 +29,11 @@ export default class Camera {
     this.perspectiveCamera.position.y = 3.06;
   }
   createOrthographicCamera() {
-    this.orthographicCamera = new THREE.OrthographicCamera(
-      (-this.sizes.aspect * this.sizes.frutrum) / 2,
-      (this.sizes.aspect * this.sizes.frutrum) / 2,
-      this.sizes.frutrum / 2,
-      -this.sizes.frutrum / 2,
-      -10,
-      10
+    this.orthographicCamera = new THREE.PerspectiveCamera(
+      95, // aqui se modifica el zoom
+      this.sizes.aspect,
+      0.1,
+      1000
     );
 
     this.scene.add(this.orthographicCamera);
