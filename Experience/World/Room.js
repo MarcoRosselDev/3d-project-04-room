@@ -64,7 +64,7 @@ export default class Room {
       this.rotation =
         ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
       console.log(e.clientX, this.rotation);
-      this.lerp.target = this.rotation;
+      this.lerp.target = this.rotation * 0.1;
     });
   }
 
