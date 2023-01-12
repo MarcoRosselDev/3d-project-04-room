@@ -10,7 +10,6 @@ export default class Room {
     this.time = this.experience.time;
     this.room = this.resources.items.room;
     this.actualRoom = this.room.scene;
-
     this.lerp = {
       current: 0,
       target: 0,
@@ -63,8 +62,7 @@ export default class Room {
     window.addEventListener("mousemove", (e) => {
       this.rotation =
         ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
-      console.log(e.clientX, this.rotation);
-      this.lerp.target = this.rotation * 0.1;
+      this.lerp.target = this.rotation * 0.05;
     });
   }
 
