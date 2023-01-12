@@ -59,7 +59,14 @@ export default class Room {
     this.swim = this.mixer.clipAction(this.room.animations[0]);
     this.swim.play();
   }
-  onMouseMove() {}
+  onMouseMove() {
+    window.addEventListener("mousemove", (e) => {
+      this.rotation =
+        ((e.clientX - window.innerWidth / 2) * 2) / window.innerWidth;
+      console.log(e.clientX, this.rotation);
+      this.lerp.target = this.rotation;
+    });
+  }
 
   resize() {}
 
@@ -69,6 +76,8 @@ export default class Room {
       this.lerp.target,
       this.lerp.ease
     );
+
+    this.actualRoom.rotation.y = this.lerp.current;
 
     this.mixer.update(this.time.delta * 0.0009);
   }
