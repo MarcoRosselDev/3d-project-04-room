@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Experience -------------------------------------------- */
 
 .experiences {
@@ -20,7 +25,6 @@
 }
 
 /* Page Itself ------------------------------------------- */
-
 .page {
   z-index: 99999;
   width: 100%;
@@ -41,4 +45,13 @@
 
 .hero-wrapper {
   position: relative;
+  height: 100%;
+  width: calc(100% - 160px);
+  margin: 0 auto;
+}
+
+.hero-main {
+  position: absolute;
+  bottom: 168px;
+  left: 0;
 }
