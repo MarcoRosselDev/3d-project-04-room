@@ -51,8 +51,10 @@ export default class Room {
       console.log(e);
       if (e.deltaY > 0) {
         this.lerp.target += 0.01;
+        this.back = false;
       } else {
         this.lerp.target -= 0.01;
+        this.back = true;
       }
     });
   }
@@ -65,6 +67,13 @@ export default class Room {
       this.lerp.target,
       this.lerp.ease
     );
+
+    if (this.back) {
+      this.lerp.target -= 0.001;
+    } else {
+      this.lerp.target += 0.001;
+    }
+
     this.lerp.target = GSAP.utils.clamp(0, 1, this.lerp.target);
     this.lerp.current = GSAP.utils.clamp(0, 1, this.lerp.current);
     this.curve.getPointAt(this.lerp.current, this.position);
