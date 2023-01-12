@@ -79,6 +79,7 @@ export default class Room {
     );
     this.directionalVector.normalize();
     this.crossVector.crossVectors(this.directionalVector, this.staticVector);
+    this.crossVector.multiplyScalar(100000);
     this.camera.orthographicCamera.lookAt(this.crossVector);
 
     // if (this.back) {
