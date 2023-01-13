@@ -56,3 +56,22 @@ body {
   bottom: 168px;
   left: 0;
 }
+
+.hero-second {
+  position: absolute;
+  top: calc(50% - 120px);
+  right: 0;
+}
+
+.hero-main-title {
+  font-size: 64px;
+}
+
+.hero-main-description {
+  font-size: 18px;
+}
+
+.hero-second-subheading {
+  font-size: 18px;
+  text-transform: uppercase;
+}
